@@ -27,14 +27,17 @@ const showDropDown = ref(false)
                     <NuxtLink to="/phone">
                         <a>電話番号</a>
                     </NuxtLink>
+                    <NuxtLink to="/email">
+                        <a>メールアドレス</a>
+                    </NuxtLink>
                     <NuxtLink to="/credit-card">
-                        <div>クレジットカード番号</div>
+                        <a>クレジットカード番号</a>
                     </NuxtLink>
                     <NuxtLink to="/name">
-                        <div>名前</div>
+                        <a>名前</a>
                     </NuxtLink>
                     <NuxtLink to="/advanced">
-                        <div>高度な生成</div>
+                        <a>高度な生成</a>
                     </NuxtLink>
                 </div>
             </div>

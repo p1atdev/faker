@@ -7,5 +7,5 @@
 </template>
 
 <style>
-/* @import "~/styles/main.css"; */
+@import "~/styles/main.css";
 </style>

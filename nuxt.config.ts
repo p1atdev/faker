@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from "nuxt3"
+import transformerDirective from "@unocss/transformer-directives"
 
 export default defineNuxtConfig({
     meta: {
@@ -28,6 +29,13 @@ export default defineNuxtConfig({
                 "px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50",
             ],
         ],
+        webFonts: {
+            provider: "google",
+            fonts: {
+                credit: ["Inconsolata", "Inconsolata:400,600"],
+            },
+        },
+        transformers: [transformerDirective({})],
     },
     srcDir: "./src",
 })
