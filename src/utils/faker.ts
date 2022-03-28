@@ -62,4 +62,6 @@ export const generateCreditCardExpiry = () => {
     return `${date.getMonth() + 1}/${date.getFullYear() % 100}`
 }
 
-export const generateFutureDate = faker.date.future
+export const generateFutureDate = () => {
+    return faker.date.future(10)
+}

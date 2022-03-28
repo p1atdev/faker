@@ -21,7 +21,10 @@ export class SugoiNamae {
                     return null
                 }
 
-                const romaji = row.querySelector("td.name").innerHTML.split(" ")
+                const romaji = row
+                    .querySelector("td.name")
+                    .innerHTML.split(" ")
+                    .map((name) => this.fixRomaji(name))
                 // console.log("ローマ字:", romaji)
                 const kanji = (() => {
                     // console.log(row.innerHTML)
@@ -46,6 +49,7 @@ export class SugoiNamae {
                 })()
                 // console.log("漢字:", kanji)
                 const hiragana = row.querySelector("td.pron a").innerHTML.split(" ")
+
                 // console.log("ひらがな:", hiragana)
 
                 // console.log(kanji)
@@ -70,5 +74,9 @@ export class SugoiNamae {
             })
 
         return names
+    }
+
+    fixRomaji(name: string): string {
+        return name.replace("Ū", "U").replace("ū", "u").replace("Ō", "O").replace("ō", "o").replace("'", "n")
     }
 }

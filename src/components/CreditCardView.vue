@@ -137,26 +137,38 @@ const target = ref(null)
                             <div w-full />
                             <div px-2 text-5xl>
                                 <!-- プロバイダロゴ -->
-                                <div v-if="card.provider == 'VISA'">
+                                <div v-if="card.provider == 'visa'">
                                     <div i-logos-visa />
                                 </div>
-                                <div v-else-if="card.provider == 'MASTERCARD'">
+                                <div v-else-if="card.provider == 'mastercard'">
                                     <div i-logos-mastercard />
                                 </div>
-                                <div v-else-if="card.provider == 'AMEX'">
+                                <div v-else-if="card.provider == 'american-express'">
                                     <div i-logos-amex />
                                 </div>
-                                <div v-else-if="card.provider == 'DISCOVER'">
+                                <div v-else-if="card.provider == 'diners-club'">
+                                    <div i-logos-dinersclub />
+                                </div>
+                                <div v-else-if="card.provider == 'discover'">
                                     <div i-logos-discover />
                                 </div>
-                                <div v-else-if="card.provider == 'JCB'">
+                                <div v-else-if="card.provider == 'jcb'">
                                     <div i-logos-jcb />
                                 </div>
-                                <div v-else-if="card.provider == 'UNIONPAY'">
+                                <div v-else-if="card.provider == 'unionpay'">
                                     <div i-logos-unionpay />
                                 </div>
-                                <div v-else-if="card.provider == 'MAESTRO'">
+                                <div v-else-if="card.provider == 'maestro'">
                                     <div i-logos-maestro />
+                                </div>
+                                <div v-else-if="card.provider == 'elo'">
+                                    <div i-logos-elo />
+                                </div>
+                                <div v-else-if="card.provider == 'hipercard'">
+                                    <div i-logos-hipercard />
+                                </div>
+                                <div v-else>
+                                    <div i-akar-icons-triangle-alert />
                                 </div>
                             </div>
                         </div>
