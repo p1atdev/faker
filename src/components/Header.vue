@@ -3,41 +3,43 @@ const showDropDown = ref(false)
 </script>
 
 <template>
-    <div flex mb-6 gap-x-4 items-center>
+    <div mt-4 flex mb-6 gap-x-4 items-center>
         <NuxtLink to="/">
-            <a p-2 text-xl font-semibold rounded hover="shadow -translate-y-1" transition="all"> 個人情報生成 </a>
+            <a>
+                <div text-xl font-semibold linkybtn>個人情報生成</div>
+            </a>
         </NuxtLink>
 
         <div
             mx-8
-            p-2
             text-lg
             relative
             cursor="pointer"
+            group
             @mouseenter="showDropDown = true"
             @mouseleave="showDropDown = false"
         >
             <div relative>一覧</div>
 
-            <div v-if="showDropDown" absolute p-4 w-lg rounded shadow bg-white z-50>
-                <div gap-y-4 gap-x-4 md="grid grid-cols-2">
+            <div v-if="showDropDown" absolute p-4 w-lg border="b-2 x-2" bg-white z-50 class="-translate-x-6">
+                <div gap-y-4 gap-x-4 class="flex flex-col" lg="grid grid-cols-2 p-2">
                     <NuxtLink to="/address">
-                        <a>住所</a>
+                        <a><div linkybtn>住所</div></a>
                     </NuxtLink>
                     <NuxtLink to="/phone">
-                        <a>電話番号</a>
+                        <a><div linkybtn>電話番号</div></a>
                     </NuxtLink>
                     <NuxtLink to="/email">
-                        <a>メールアドレス</a>
+                        <a> <div linkybtn>メールアドレス</div></a>
                     </NuxtLink>
                     <NuxtLink to="/credit-card">
-                        <a>クレジットカード番号</a>
+                        <a><div linkybtn>クレジットカード番号</div></a>
                     </NuxtLink>
                     <NuxtLink to="/name">
-                        <a>名前</a>
+                        <a><div linkybtn>名前</div></a>
                     </NuxtLink>
                     <NuxtLink to="/advanced">
-                        <a>高度な生成</a>
+                        <a><div linkybtn>高度な生成</div></a>
                     </NuxtLink>
                 </div>
             </div>
