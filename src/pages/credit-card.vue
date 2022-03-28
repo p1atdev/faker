@@ -41,13 +41,7 @@ await generateCredtCards()
 
         <div my-4>
             <button
-                px-4
-                py-2
-                border-2
-                border-slate-800
-                hover="rounded-md bg-slate-800 text-slate-100"
-                transition="all duration-100 ease-in-out"
-                active="translate-y-1"
+                btn
                 @click="
                     () => {
                         generateCredtCards()

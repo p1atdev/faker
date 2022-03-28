@@ -4,12 +4,6 @@ import { NameType } from "../types/name"
 
 export class SugoiNamae {
     getNames(html: string): NameType[] {
-        // const parser = new DOMParser()
-
-        // console.log(html)
-
-        // const doc = new JSDOM(html).window.document
-        // const doc = parser.parseFromString(html, "text/html")
         const doc = parse(html)
 
         const rows = doc.getElementsByTagName("tr")
@@ -25,47 +19,47 @@ export class SugoiNamae {
                     .querySelector("td.name")
                     .innerHTML.split(" ")
                     .map((name) => this.fixRomaji(name))
-                // console.log("ローマ字:", romaji)
+
                 const kanji = (() => {
-                    // console.log(row.innerHTML)
-                    return ["未実装", "苗字"]
-                    // const namae = row.innerHTML.split(" ")
-                    // console.log("名前:", namae)
-                    // // const lastNameDoc = new JSDOM(namae[0]).window.document
-                    // // const firstNameDoc = new JSDOM(namae[1]).window.document
-                    // // const lastNameDoc = parser.parseFromString(namae[0], "text/html")
-                    // // const firstNameDoc = parser.parseFromString(namae[1], "text/html")
-                    // const lastNameDoc = parse(namae[0])
-                    // const firstNameDoc = parse(namae[1])
+                    const blocks = row
+                        .querySelector("td.name-in-japanese")
+                        .innerHTML.split(" ")
+                        .filter((block) => {
+                            return block.length > 0 && block !== "\n"
+                        })
 
-                    // const lastName = Array.from(lastNameDoc.querySelectorAll("span.kanji-with-meaning"))
-                    //     .map((span) => span.innerHTML)
-                    //     .join()
-                    // const firstName = Array.from(firstNameDoc.querySelectorAll("span.kanji-with-meaning"))
-                    //     .map((span) => span.innerHTML)
-                    //     .join()
+                    // console.log("ブロック:", blocks)
 
-                    // return [lastName, firstName]
+                    // "\n"で終了してるところまでが前半、残りが後半
+                    const firstHalfLastIndex = blocks.findIndex((block) => block.endsWith("\n"))
+
+                    const firstHalf = blocks.slice(0, firstHalfLastIndex + 1).join(" ")
+                    const lastHalf = blocks.slice(firstHalfLastIndex + 1).join(" ")
+
+                    // console.log("前半:", firstHalf)
+                    // console.log("後半:", lastHalf)
+
+                    // 前半と後半からそれぞれ正規表現で<span></span>で囲まれてる部分を排除
+                    const lastName = firstHalf.replace(/<span.*?>/g, "").replace(/<\/span>/g, "")
+                    const firstName = lastHalf.replace(/<span.*?>/g, "").replace(/<\/span>/g, "")
+
+                    return [firstName, lastName]
                 })()
-                // console.log("漢字:", kanji)
+
                 const hiragana = row.querySelector("td.pron a").innerHTML.split(" ")
-
-                // console.log("ひらがな:", hiragana)
-
-                // console.log(kanji)
 
                 return {
                     kanji: {
-                        first: kanji[1],
-                        last: kanji[0],
+                        first: kanji[0],
+                        last: kanji[1],
                     },
                     kana: {
-                        first: hiragana[1],
-                        last: hiragana[0],
+                        first: hiragana[0],
+                        last: hiragana[1],
                     },
                     romaji: {
-                        first: romaji[1],
-                        last: romaji[0],
+                        first: romaji[0],
+                        last: romaji[1],
                     },
                 }
             })

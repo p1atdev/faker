@@ -25,6 +25,10 @@ export default defineNuxtConfig({
         },
         shortcuts: [
             ["linkybtn", "border-b-2 border-transparent hover:border-slate-900 active:translate-y-1 transition-all"],
+            [
+                "btn",
+                "px-4 py-2 border-2 border-slate-800 hover:rounded-md hover:bg-slate-800 hover:text-slate-100 transition-all transition-duration-100 transition-ease-in-out active:translate-y-1",
+            ],
         ],
         webFonts: {
             provider: "google",
